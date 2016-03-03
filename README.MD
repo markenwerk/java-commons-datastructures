@@ -126,10 +126,10 @@ Foo foo = ...
 Bar bar = ...
 
 // creates a left container that holds foo
-Either<Key, Value> left = new Left<>(foo);
+Either<Foo, Bar> left = new Left<>(foo);
 
 // creates a right container that holds bar
-Either<Key, Value> right = new Right<>(foo);
+Either<Foo, Bar> right = new Right<>(bar);
 
 // returns true
 left.isLeft();

@@ -105,8 +105,8 @@ public final class Triple<First, Second, Third> {
 	 * 
 	 * @return The third value.
 	 */
-	public Second getThird() {
-		return second;
+	public Third getThird() {
+		return third;
 	}
 
 	/**

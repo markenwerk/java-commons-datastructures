@@ -19,47 +19,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
+package net.markenwerk.commons.datastructures;
 
 /**
- * A {@link Triple} is a simple immutable container class that holds three
- * values.
+ * A {@link Tuple} is a simple immutable container class that holds two values.
  * 
  * @param <First>
  *            The type of the first value.
  * @param <Second>
  *            The type of the second value.
- * @param <Third>
- *            The type of the third value.
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public final class Triple<First, Second, Third> {
+public final class Tuple<First, Second> {
 
 	private final First first;
 
 	private final Second second;
 
-	private final Third third;
-
 	/**
-	 * Creates a new {@link Triple} for the given values.
+	 * Creates a new {@link Tuple} for the given values.
 	 * 
 	 * @param first
 	 *            The first value to be used.
 	 * @param second
 	 *            The second second to be used.
-	 * @param third
-	 *            The third second to be used.
 	 */
-	public Triple(First first, Second second, Third third) {
+	public Tuple(First first, Second second) {
 		this.first = first;
 		this.second = second;
-		this.third = third;
 	}
 
 	/**
-	 * Returns the first value this {@link Triple} has been created with.
+	 * Returns the first value this {@link Tuple} has been created with.
 	 * 
 	 * @return The first value.
 	 */
@@ -68,19 +60,19 @@ public final class Triple<First, Second, Third> {
 	}
 
 	/**
-	 * Creates a new {@link Triple} with the given first value and the other
-	 * values from this {@link Triple}.
+	 * Creates a new {@link Tuple} with the given first value and the second
+	 * value from this {@link Tuple}.
 	 * 
 	 * @param first
 	 *            The first value to be used.
-	 * @return The created {@link Triple}.
+	 * @return The created {@link Tuple}.
 	 */
-	public Triple<First, Second, Third> withFirst(First first) {
-		return new Triple<First, Second, Third>(first, second, third);
+	public Tuple<First, Second> withFirst(First first) {
+		return new Tuple<First, Second>(first, second);
 	}
 
 	/**
-	 * Returns the second value this {@link Triple} has been created with.
+	 * Returns the second value this {@link Tuple} has been created with.
 	 * 
 	 * @return The second value.
 	 */
@@ -89,36 +81,15 @@ public final class Triple<First, Second, Third> {
 	}
 
 	/**
-	 * Creates a new {@link Triple} with the given second value and the other
-	 * values from this {@link Triple}.
+	 * Creates a new {@link Tuple} with the given second value and the first
+	 * value from this {@link Tuple}.
 	 * 
 	 * @param second
 	 *            The second value to be used.
-	 * @return The created {@link Triple}.
+	 * @return The created {@link Tuple}.
 	 */
-	public Triple<First, Second, Third> withSecond(Second second) {
-		return new Triple<First, Second, Third>(first, second, third);
-	}
-
-	/**
-	 * Returns the third value this {@link Triple} has been created with.
-	 * 
-	 * @return The third value.
-	 */
-	public Third getThird() {
-		return third;
-	}
-
-	/**
-	 * Creates a new {@link Triple} with the given third value and the other
-	 * values from this {@link Triple}.
-	 * 
-	 * @param third
-	 *            The third value to be used.
-	 * @return The created {@link Triple}.
-	 */
-	public Triple<First, Second, Third> withThird(Third third) {
-		return new Triple<First, Second, Third>(first, second, third);
+	public Tuple<First, Second> withSecond(Second second) {
+		return new Tuple<First, Second>(first, second);
 	}
 
 	@Override
@@ -127,7 +98,6 @@ public final class Triple<First, Second, Third> {
 		int result = 1;
 		result = prime * result + ((first == null) ? 0 : first.hashCode());
 		result = prime * result + ((second == null) ? 0 : second.hashCode());
-		result = prime * result + ((third == null) ? 0 : third.hashCode());
 		return result;
 	}
 
@@ -140,12 +110,10 @@ public final class Triple<First, Second, Third> {
 		} else if (getClass() != object.getClass()) {
 			return false;
 		}
-		Triple<?, ?, ?> other = (Triple<?, ?, ?>) object;
+		Tuple<?, ?> other = (Tuple<?, ?>) object;
 		if (first == null && other.first != null || !first.equals(other.first)) {
 			return false;
 		} else if (second == null && other.second != null || !second.equals(other.second)) {
-			return false;
-		} else if (third == null && other.third != null || !third.equals(other.third)) {
 			return false;
 		}
 		return true;
@@ -153,7 +121,7 @@ public final class Triple<First, Second, Third> {
 
 	@Override
 	public String toString() {
-		return "Triple [first=" + first + ", second=" + second + ", third=" + third + "]";
+		return "Tuple [first=" + first + ", second=" + second + "]";
 	}
 
 }

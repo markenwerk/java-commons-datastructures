@@ -25,8 +25,6 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.markenwerk.commons.datstructures.Entry;
-
 /**
  * JUnit test for {@link Entry}.
  * 

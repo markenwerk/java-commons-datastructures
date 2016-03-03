@@ -19,79 +19,76 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
-
+package net.markenwerk.commons.datastructures;
 
 /**
- * A {@link Tuple} is a simple immutable container class that holds two
- * values.
+ * A {@link Pair} is a simple immutable container class that holds two values of
+ * a similar type.
  * 
- * @param <First>
- *            The type of the first value.
- * @param <Second>
- *            The type of the second value.
+ * @param <Payload>
+ *            The payload type.
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public final class Tuple<First, Second> {
+public final class Pair<Payload> {
 
-	private final First first;
+	private final Payload first;
 
-	private final Second second;
+	private final Payload second;
 
 	/**
-	 * Creates a new {@link Tuple} for the given values.
+	 * Creates a new {@link Pair} for the given values.
 	 * 
 	 * @param first
 	 *            The first value to be used.
 	 * @param second
 	 *            The second second to be used.
 	 */
-	public Tuple(First first, Second second) {
+	public Pair(Payload first, Payload second) {
 		this.first = first;
 		this.second = second;
 	}
 
 	/**
-	 * Returns the first value this {@link Tuple} has been created with.
+	 * Returns the first value this {@link Pair} has been created with.
 	 * 
 	 * @return The first value.
 	 */
-	public First getFirst() {
+	public Payload getFirst() {
 		return first;
 	}
 
 	/**
-	 * Creates a new {@link Tuple} with the given first value and the second value from this
-	 * {@link Tuple}.
+	 * Creates a new {@link Pair} with the given first value and the second
+	 * value from this {@link Pair}.
 	 * 
 	 * @param first
 	 *            The first value to be used.
-	 * @return The created {@link Tuple}.
+	 * @return The created {@link Pair}.
 	 */
-	public Tuple<First, Second> withFirst(First first) {
-		return new Tuple<First, Second>(first, second);
+	public Pair<Payload> withFirst(Payload first) {
+		return new Pair<Payload>(first, second);
 	}
 
 	/**
-	 * Returns the second value this {@link Tuple} has been created with.
+	 * Returns the second value this {@link Pair} has been created with.
 	 * 
 	 * @return The second value.
 	 */
-	public Second getSecond() {
+	public Payload getSecond() {
 		return second;
 	}
 
 	/**
-	 * Creates a new {@link Tuple} with the given second value and the first value from this
-	 * {@link Tuple}.
+	 * Creates a new {@link Pair} with the given second value and the first
+	 * value from this {@link Pair}.
 	 * 
 	 * @param second
 	 *            The second value to be used.
-	 * @return The created {@link Tuple}.
+	 * @return The created {@link Pair}.
 	 */
-	public Tuple<First, Second> withSecond(Second second) {
-		return new Tuple<First, Second>(first, second);
+	public Pair<Payload> withSecond(Payload second) {
+		return new Pair<Payload>(first, second);
 	}
 
 	@Override
@@ -112,7 +109,7 @@ public final class Tuple<First, Second> {
 		} else if (getClass() != object.getClass()) {
 			return false;
 		}
-		Tuple<?, ?> other = (Tuple<?, ?>) object;
+		Pair<?> other = (Pair<?>) object;
 		if (first == null && other.first != null || !first.equals(other.first)) {
 			return false;
 		} else if (second == null && other.second != null || !second.equals(other.second)) {
@@ -123,7 +120,7 @@ public final class Tuple<First, Second> {
 
 	@Override
 	public String toString() {
-		return "Tuple [first=" + first + ", second=" + second + "]";
+		return "Pair [first=" + first + ", second=" + second + "]";
 	}
 
 }

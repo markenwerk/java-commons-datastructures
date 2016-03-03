@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
+package net.markenwerk.commons.datastructures;
 
 /**
  * A {@link Wrapper} is a simple immutable container class that holds a single

@@ -19,17 +19,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
+package net.markenwerk.commons.datastructures;
 
 /**
  * An {@link Right} is one of two distinct simple immutable container class that
  * holds a single value.
  *
  * @param <Left>
- *            The type of a {@link net.markenwerk.commons.datstructures.Left}
+ *            The type of a {@link net.markenwerk.commons.datastructures.Left}
  *            {@link Either}.
  * @param <Payload>
- *            The type of a {@link net.markenwerk.commons.datstructures.Right}
+ *            The type of a {@link net.markenwerk.commons.datastructures.Right}
  *            {@link Either}.
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0

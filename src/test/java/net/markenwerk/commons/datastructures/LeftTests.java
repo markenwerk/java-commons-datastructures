@@ -25,9 +25,6 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.markenwerk.commons.datstructures.Either;
-import net.markenwerk.commons.datstructures.Left;
-
 /**
  * JUnit test for {@link Left}.
  * 

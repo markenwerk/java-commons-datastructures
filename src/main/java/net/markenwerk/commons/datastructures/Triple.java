@@ -19,76 +19,106 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
+package net.markenwerk.commons.datastructures;
 
 /**
- * A {@link Pair} is a simple immutable container class that holds two values of
- * a similar type.
+ * A {@link Triple} is a simple immutable container class that holds three
+ * values.
  * 
- * @param <Payload>
- *            The payload type.
+ * @param <First>
+ *            The type of the first value.
+ * @param <Second>
+ *            The type of the second value.
+ * @param <Third>
+ *            The type of the third value.
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public final class Pair<Payload> {
+public final class Triple<First, Second, Third> {
 
-	private final Payload first;
+	private final First first;
 
-	private final Payload second;
+	private final Second second;
+
+	private final Third third;
 
 	/**
-	 * Creates a new {@link Pair} for the given values.
+	 * Creates a new {@link Triple} for the given values.
 	 * 
 	 * @param first
 	 *            The first value to be used.
 	 * @param second
 	 *            The second second to be used.
+	 * @param third
+	 *            The third second to be used.
 	 */
-	public Pair(Payload first, Payload second) {
+	public Triple(First first, Second second, Third third) {
 		this.first = first;
 		this.second = second;
+		this.third = third;
 	}
 
 	/**
-	 * Returns the first value this {@link Pair} has been created with.
+	 * Returns the first value this {@link Triple} has been created with.
 	 * 
 	 * @return The first value.
 	 */
-	public Payload getFirst() {
+	public First getFirst() {
 		return first;
 	}
 
 	/**
-	 * Creates a new {@link Pair} with the given first value and the second
-	 * value from this {@link Pair}.
+	 * Creates a new {@link Triple} with the given first value and the other
+	 * values from this {@link Triple}.
 	 * 
 	 * @param first
 	 *            The first value to be used.
-	 * @return The created {@link Pair}.
+	 * @return The created {@link Triple}.
 	 */
-	public Pair<Payload> withFirst(Payload first) {
-		return new Pair<Payload>(first, second);
+	public Triple<First, Second, Third> withFirst(First first) {
+		return new Triple<First, Second, Third>(first, second, third);
 	}
 
 	/**
-	 * Returns the second value this {@link Pair} has been created with.
+	 * Returns the second value this {@link Triple} has been created with.
 	 * 
 	 * @return The second value.
 	 */
-	public Payload getSecond() {
+	public Second getSecond() {
 		return second;
 	}
 
 	/**
-	 * Creates a new {@link Pair} with the given second value and the first
-	 * value from this {@link Pair}.
+	 * Creates a new {@link Triple} with the given second value and the other
+	 * values from this {@link Triple}.
 	 * 
 	 * @param second
 	 *            The second value to be used.
-	 * @return The created {@link Pair}.
+	 * @return The created {@link Triple}.
 	 */
-	public Pair<Payload> withSecond(Payload second) {
-		return new Pair<Payload>(first, second);
+	public Triple<First, Second, Third> withSecond(Second second) {
+		return new Triple<First, Second, Third>(first, second, third);
+	}
+
+	/**
+	 * Returns the third value this {@link Triple} has been created with.
+	 * 
+	 * @return The third value.
+	 */
+	public Third getThird() {
+		return third;
+	}
+
+	/**
+	 * Creates a new {@link Triple} with the given third value and the other
+	 * values from this {@link Triple}.
+	 * 
+	 * @param third
+	 *            The third value to be used.
+	 * @return The created {@link Triple}.
+	 */
+	public Triple<First, Second, Third> withThird(Third third) {
+		return new Triple<First, Second, Third>(first, second, third);
 	}
 
 	@Override
@@ -97,6 +127,7 @@ public final class Pair<Payload> {
 		int result = 1;
 		result = prime * result + ((first == null) ? 0 : first.hashCode());
 		result = prime * result + ((second == null) ? 0 : second.hashCode());
+		result = prime * result + ((third == null) ? 0 : third.hashCode());
 		return result;
 	}
 
@@ -109,10 +140,12 @@ public final class Pair<Payload> {
 		} else if (getClass() != object.getClass()) {
 			return false;
 		}
-		Pair<?> other = (Pair<?>) object;
+		Triple<?, ?, ?> other = (Triple<?, ?, ?>) object;
 		if (first == null && other.first != null || !first.equals(other.first)) {
 			return false;
 		} else if (second == null && other.second != null || !second.equals(other.second)) {
+			return false;
+		} else if (third == null && other.third != null || !third.equals(other.third)) {
 			return false;
 		}
 		return true;
@@ -120,7 +153,7 @@ public final class Pair<Payload> {
 
 	@Override
 	public String toString() {
-		return "Pair [first=" + first + ", second=" + second + "]";
+		return "Triple [first=" + first + ", second=" + second + ", third=" + third + "]";
 	}
 
 }

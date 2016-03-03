@@ -19,7 +19,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package net.markenwerk.commons.datstructures;
+package net.markenwerk.commons.datastructures;
 
 /**
  * An {@link Either} is one of two distinct simple immutable container class
@@ -27,15 +27,15 @@ package net.markenwerk.commons.datstructures;
  * 
  *
  * @param <Left>
- *            The type of a {@link net.markenwerk.commons.datstructures.Left}
+ *            The type of a {@link net.markenwerk.commons.datastructures.Left}
  *            {@link Either}.
  * @param <Right>
- *            The type of a {@link net.markenwerk.commons.datstructures.Right}
+ *            The type of a {@link net.markenwerk.commons.datastructures.Right}
  *            {@link Either}.
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
- * @see net.markenwerk.commons.datstructures.Left
- * @see net.markenwerk.commons.datstructures.Right
+ * @see net.markenwerk.commons.datastructures.Left
+ * @see net.markenwerk.commons.datastructures.Right
  */
 @SuppressWarnings("hiding")
 public abstract class Either<Left, Right> {
@@ -45,10 +45,11 @@ public abstract class Either<Left, Right> {
 
 	/**
 	 * Returns whether this {@link Either} is a
-	 * {@link net.markenwerk.commons.datstructures.Left} {@link Either}.
+	 * {@link net.markenwerk.commons.datastructures.Left} {@link Either}.
 	 * 
 	 * @return If this {@link Either} is a
-	 *         {@link net.markenwerk.commons.datstructures.Left} {@link Either}.
+	 *         {@link net.markenwerk.commons.datastructures.Left} {@link Either}
+	 *         .
 	 */
 	public abstract boolean isLeft();
 
@@ -65,11 +66,11 @@ public abstract class Either<Left, Right> {
 
 	/**
 	 * Returns whether this {@link Either} is a
-	 * {@link net.markenwerk.commons.datstructures.Right} {@link Either}.
+	 * {@link net.markenwerk.commons.datastructures.Right} {@link Either}.
 	 * 
 	 * @return If this {@link Either} is a
-	 *         {@link net.markenwerk.commons.datstructures.Right} {@link Either}
-	 *         .
+	 *         {@link net.markenwerk.commons.datastructures.Right}
+	 *         {@link Either} .
 	 */
 	public abstract boolean isRight();
 

@@ -1,5 +1,3 @@
-package net.markenwerk.commons.datastructures;
-
 /*
  * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
@@ -21,6 +19,7 @@ package net.markenwerk.commons.datastructures;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package net.markenwerk.commons.datastructures;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -81,7 +80,7 @@ public class BoxTests {
 		Box<Object> box = new Box<Object>(new Object());
 
 		box.setValue(value);
-		
+
 		Assert.assertSame(value, box.getValue());
 
 	}

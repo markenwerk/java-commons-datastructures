@@ -1,7 +1,5 @@
-package net.markenwerk.commons.datastructures;
-
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +19,7 @@ package net.markenwerk.commons.datastructures;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package net.markenwerk.commons.datastructures;
 
 import org.junit.Assert;
 import org.junit.Test;

@@ -24,6 +24,23 @@ Consult the [usage description](#datastructures) and [Javadoc](https://markenwer
 
 ## Datastructures
 
+#### Box
+
+This library provides the generic [`Box`][Box], which is an mutable container class that holds a single value.
+
+```java
+Foo value = ...
+
+// creates a container that holds value
+Box<Foo> box = new Box<>(value);
+
+// returns the contained value
+box.getValue();
+
+// update the contained value
+box.setValue(new Foo(...));
+```
+
 #### Wrapper
 
 This library provides the generic [`Wrapper`][Wrapper], which is an immutable container class that holds a single value.

@@ -27,7 +27,7 @@ package net.markenwerk.commons.datastructures;
  * @param <Payload>
  *            The payload type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 1.1.0
  */
 public final class Box<Payload> {
 

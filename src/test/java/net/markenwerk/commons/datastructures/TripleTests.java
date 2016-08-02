@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Triple}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class TripleTests {
 
-	/**
-	 * Retrieve the first value.
-	 */
 	@Test
 	public void getFirst_null() {
 
@@ -43,9 +36,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Retrieve the first value.
-	 */
 	@Test
 	public void getFirst_nonNull() {
 
@@ -56,9 +46,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change the first value.
-	 */
 	@Test
 	public void withFirst_changeFirst() {
 
@@ -70,9 +57,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the first value.
-	 */
 	@Test
 	public void withFirst_keepSecond() {
 
@@ -84,9 +68,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the first value.
-	 */
 	@Test
 	public void withFirst_keepThird() {
 
@@ -98,9 +79,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Retrieve the second value.
-	 */
 	@Test
 	public void getSecond_null() {
 
@@ -110,9 +88,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Retrieve the second value.
-	 */
 	@Test
 	public void getSecond_nonNull() {
 
@@ -123,9 +98,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the second value.
-	 */
 	@Test
 	public void withSecond_keepFirst() {
 
@@ -137,9 +109,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change the second value.
-	 */
 	@Test
 	public void withSecond_changeSecond() {
 
@@ -151,9 +120,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the second value.
-	 */
 	@Test
 	public void withSecond_keepThird() {
 
@@ -165,9 +131,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Retrieve the third value.
-	 */
 	@Test
 	public void getThird_null() {
 
@@ -177,9 +140,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Retrieve the third value.
-	 */
 	@Test
 	public void getThird_nonNull() {
 
@@ -190,9 +150,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the third value.
-	 */
 	@Test
 	public void withThird_keepFirst() {
 
@@ -204,9 +161,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change only the third value.
-	 */
 	@Test
 	public void withThird_keepSecond() {
 
@@ -218,9 +172,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Change the third value.
-	 */
 	@Test
 	public void withThird_changeThird() {
 
@@ -232,9 +183,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Equality with same values.
-	 */
 	@Test
 	public void equals_equal() {
 
@@ -248,9 +196,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Equality with different first values.
-	 */
 	@Test
 	public void equals_nonEqualFirst() {
 
@@ -263,9 +208,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Equality with different second values.
-	 */
 	@Test
 	public void equals_nonEqualSecond() {
 
@@ -278,9 +220,6 @@ public class TripleTests {
 
 	}
 
-	/**
-	 * Equality with different third values.
-	 */
 	@Test
 	public void equals_nonEqualThird() {
 

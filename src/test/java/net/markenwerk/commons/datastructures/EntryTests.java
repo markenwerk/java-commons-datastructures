@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Entry}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class EntryTests {
 
-	/**
-	 * Retrieve the key value.
-	 */
 	@Test
 	public void getKey_null() {
 
@@ -43,9 +36,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Retrieve the key value.
-	 */
 	@Test
 	public void getKey_nonNull() {
 
@@ -56,9 +46,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Change the key value.
-	 */
 	@Test
 	public void withKey_changeKey() {
 
@@ -69,9 +56,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Change only the key value.
-	 */
 	@Test
 	public void withKey_keepValue() {
 
@@ -82,9 +66,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Retrieve the value value.
-	 */
 	@Test
 	public void getValue_null() {
 
@@ -94,9 +75,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Retrieve the value value.
-	 */
 	@Test
 	public void getValue_nonNull() {
 
@@ -107,9 +85,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Change only the value value.
-	 */
 	@Test
 	public void withValue_keepKey() {
 
@@ -120,9 +95,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Change the value value.
-	 */
 	@Test
 	public void withValue_changeValue() {
 
@@ -133,9 +105,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Equality with same values.
-	 */
 	@Test
 	public void equals_equal() {
 
@@ -148,9 +117,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Equality with different key value.
-	 */
 	@Test
 	public void equals_nonEqualKey() {
 
@@ -162,9 +128,6 @@ public class EntryTests {
 
 	}
 
-	/**
-	 * Equality with different key value.
-	 */
 	@Test
 	public void equals_nonEqualValue() {
 

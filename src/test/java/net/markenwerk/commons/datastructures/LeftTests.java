@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Left}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class LeftTests {
 
-	/**
-	 * {@link Left} is left.
-	 */
 	@Test
 	public void isLeft() {
 
@@ -43,9 +36,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * Retrieve the left value.
-	 */
 	@Test
 	public void getLeft_null() {
 
@@ -55,9 +45,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * Retrieve the left value.
-	 */
 	@Test
 	public void getLeft_nonNull() {
 
@@ -68,9 +55,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * {@link Left} is not right.
-	 */
 	@Test
 	public void isRight() {
 
@@ -80,9 +64,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * Get right value.
-	 */
 	@Test(expected = IllegalStateException.class)
 	public void getRight() {
 
@@ -92,9 +73,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * Equality with same value.
-	 */
 	@Test
 	public void equals_equal() {
 
@@ -106,9 +84,6 @@ public class LeftTests {
 
 	}
 
-	/**
-	 * Equality with different value.
-	 */
 	@Test
 	public void equals_nonEqual() {
 

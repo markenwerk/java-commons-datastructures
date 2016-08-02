@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Wrapper}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class WrapperTests {
 
-	/**
-	 * Retrieve the value.
-	 */
 	@Test
 	public void getValue_null() {
 
@@ -43,9 +36,6 @@ public class WrapperTests {
 
 	}
 
-	/**
-	 * Retrieve the value.
-	 */
 	@Test
 	public void getValue_nonNull() {
 
@@ -56,9 +46,6 @@ public class WrapperTests {
 
 	}
 
-	/**
-	 * Equality with same value.
-	 */
 	@Test
 	public void equals_equal() {
 
@@ -70,9 +57,6 @@ public class WrapperTests {
 
 	}
 
-	/**
-	 * Equality with different value.
-	 */
 	@Test
 	public void equals_nonEqual() {
 

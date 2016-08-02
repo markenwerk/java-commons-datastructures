@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Tuple}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class TupleTests {
 
-	/**
-	 * Retrieve the first value.
-	 */
 	@Test
 	public void getFirst_null() {
 
@@ -43,9 +36,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Retrieve the first value.
-	 */
 	@Test
 	public void getFirst_nonNull() {
 
@@ -56,9 +46,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Change the first value.
-	 */
 	@Test
 	public void withFirst_changeFirst() {
 
@@ -69,9 +56,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Change only the first value.
-	 */
 	@Test
 	public void withFirst_keepSecond() {
 
@@ -82,9 +66,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Retrieve the second value.
-	 */
 	@Test
 	public void getSecond_null() {
 
@@ -94,9 +75,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Retrieve the second value.
-	 */
 	@Test
 	public void getSecond_nonNull() {
 
@@ -107,9 +85,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Change only the second value.
-	 */
 	@Test
 	public void withSecond_keepFirst() {
 
@@ -120,9 +95,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Change the second value.
-	 */
 	@Test
 	public void withSecond_changeSecond() {
 
@@ -133,9 +105,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Equality with same values.
-	 */
 	@Test
 	public void equals_equal() {
 
@@ -148,9 +117,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Equality with different first value.
-	 */
 	@Test
 	public void equals_nonEqualFirst() {
 
@@ -162,9 +128,6 @@ public class TupleTests {
 
 	}
 
-	/**
-	 * Equality with different first value.
-	 */
 	@Test
 	public void equals_nonEqualSecond() {
 

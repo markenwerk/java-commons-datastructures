@@ -24,16 +24,9 @@ package net.markenwerk.commons.datastructures;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * JUnit test for {@link Box}.
- * 
- * @author Torsten Krause (tk at markenwerk dot net)
- */
+@SuppressWarnings("javadoc")
 public class BoxTests {
 
-	/**
-	 * Create with {@literal null}.
-	 */
 	@Test
 	public void create_null() {
 
@@ -43,9 +36,6 @@ public class BoxTests {
 
 	}
 
-	/**
-	 * Create the value.
-	 */
 	@Test
 	public void create_nonNull() {
 
@@ -56,9 +46,6 @@ public class BoxTests {
 
 	}
 
-	/**
-	 * Update value to {@literal null}.
-	 */
 	@Test
 	public void setvalue_null() {
 
@@ -70,9 +57,6 @@ public class BoxTests {
 
 	}
 
-	/**
-	 * Update value to other value.
-	 */
 	@Test
 	public void setValue_nonNull() {
 

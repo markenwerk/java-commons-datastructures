@@ -24,7 +24,6 @@ package net.markenwerk.commons.datastructures;
 /**
  * An {@link Either} is one of two distinct simple immutable container class
  * that holds a single value.
- * 
  *
  * @param <Left>
  *            The type of a {@link net.markenwerk.commons.datastructures.Left}
@@ -48,8 +47,7 @@ public abstract class Either<Left, Right> {
 	 * {@link net.markenwerk.commons.datastructures.Left} {@link Either}.
 	 * 
 	 * @return If this {@link Either} is a
-	 *         {@link net.markenwerk.commons.datastructures.Left} {@link Either}
-	 *         .
+	 *         {@link net.markenwerk.commons.datastructures.Left} {@link Either}.
 	 */
 	public abstract boolean isLeft();
 
@@ -70,7 +68,7 @@ public abstract class Either<Left, Right> {
 	 * 
 	 * @return If this {@link Either} is a
 	 *         {@link net.markenwerk.commons.datastructures.Right}
-	 *         {@link Either} .
+	 *         {@link Either}.
 	 */
 	public abstract boolean isRight();
 

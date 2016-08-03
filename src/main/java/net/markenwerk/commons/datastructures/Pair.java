@@ -37,7 +37,7 @@ public final class Pair<Payload> {
 	private final Payload second;
 
 	/**
-	 * Creates a new {@link Pair} for the given values.
+	 * Creates a new {@link Pair}.
 	 * 
 	 * @param first
 	 *            The first value to be used.

@@ -35,7 +35,7 @@ public final class Wrapper<Payload> {
 	private final Payload value;
 
 	/**
-	 * Creates a new {@link Wrapper} for the given value.
+	 * Creates a new {@link Wrapper}.
 	 * 
 	 * @param value
 	 *            The value to be used.

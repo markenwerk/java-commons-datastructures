@@ -40,7 +40,7 @@ public final class Right<Left, Payload> extends Either<Left, Payload> {
 	private final Payload value;
 
 	/**
-	 * Creates a new {@link Right} for the given value.
+	 * Creates a new {@link Right}.
 	 * 
 	 * @param value
 	 *            The Value to be used.

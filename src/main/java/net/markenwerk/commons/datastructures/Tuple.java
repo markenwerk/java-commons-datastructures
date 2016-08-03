@@ -38,7 +38,7 @@ public final class Tuple<First, Second> {
 	private final Second second;
 
 	/**
-	 * Creates a new {@link Tuple} for the given values.
+	 * Creates a new {@link Tuple}.
 	 * 
 	 * @param first
 	 *            The first value to be used.

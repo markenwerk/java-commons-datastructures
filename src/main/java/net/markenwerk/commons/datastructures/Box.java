@@ -34,7 +34,7 @@ public final class Box<Payload> {
 	private Payload value;
 
 	/**
-	 * Creates a new {@link Box} for {@literal null}.
+	 * Creates a new {@link Box} with {@literal null} as the current value.
 	 * 
 	 */
 	public Box() {
@@ -42,7 +42,7 @@ public final class Box<Payload> {
 	}
 
 	/**
-	 * Creates a new {@link Box} for the given value.
+	 * Creates a new {@link Box}.
 	 * 
 	 * @param value
 	 *            The value to be used.

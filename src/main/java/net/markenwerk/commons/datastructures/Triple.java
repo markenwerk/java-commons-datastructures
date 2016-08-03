@@ -43,7 +43,7 @@ public final class Triple<First, Second, Third> {
 	private final Third third;
 
 	/**
-	 * Creates a new {@link Triple} for the given values.
+	 * Creates a new {@link Triple}.
 	 * 
 	 * @param first
 	 *            The first value to be used.

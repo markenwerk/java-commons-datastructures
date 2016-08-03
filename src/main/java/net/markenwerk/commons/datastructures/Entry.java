@@ -39,7 +39,7 @@ public final class Entry<Key, Value> {
 	private final Value value;
 
 	/**
-	 * Creates a new {@link Entry} for the given key and value.
+	 * Creates a new {@link Entry}.
 	 * 
 	 * @param key
 	 *            The key to be used.

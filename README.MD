@@ -55,6 +55,26 @@ Wrapper<Foo> wrapper = new Wrapper<>(value);
 wrapper.getValue();
 ```
 
+#### Optional
+
+This library provides the generic [`Optional`][Optional], which is an immutable container class that may hold a single value.
+
+```java
+Foo value = ...
+
+// creates a container that holds no value
+Optional<Foo> emptyOptional = new Optional<>();
+
+// creates a container that holds value
+Optional<Foo> optional = new Optional<>(value);
+
+// returns the contained value
+optional.getValue();
+
+// returns whether the optional has a value
+optional.hasValue();
+```
+
 #### Pair
 
 This library provides the generic [`Pair`][Pair], which is an immutable container class that holds two values of similar type.
@@ -165,6 +185,7 @@ right.isLeft();
 [Entry]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Entry.html
 [Left]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Left.html
 [Pair]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Pair.html
+[Optional]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Optional.html
 [Right]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Right.html
 [Triple]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Triple.html
 [Tuple]: https://markenwerk.github.io/java-commons-datastructures/index.html?net/markenwerk/commons/datastructures/Tuple.html

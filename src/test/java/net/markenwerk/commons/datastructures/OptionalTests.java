@@ -56,6 +56,26 @@ public class OptionalTests {
 		optional.getValue();
 
 	}
+	
+	@Test
+	public void getValue_fallback() {
+
+		Object value = new Object();
+		Optional<Object> optional = new Optional<Object>();
+
+		Assert.assertSame(value, optional.getValue(value));
+
+	}
+
+	@Test
+	public void getValue_noFallback() {
+
+		Object value = new Object();
+		Optional<Object> optional = new Optional<Object>(value);
+
+		Assert.assertSame(value, optional.getValue(value));
+
+	}
 
 	@Test
 	public void hasValue_null() {

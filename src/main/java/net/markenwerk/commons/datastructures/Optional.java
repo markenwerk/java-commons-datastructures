@@ -80,6 +80,18 @@ public final class Optional<Payload> {
 		return value;
 	}
 
+	/**
+	 * Returns the value this {@link Optional} has been created with, if any, or
+	 * the given fallback payload value.
+	 * 
+	 * @param fallback
+	 *            The fallback to be used.
+	 * @return The value.
+	 */
+	public Payload getValue(Payload fallback) {
+		return hasValue ? value : fallback;
+	}
+
 	@Override
 	public int hashCode() {
 		return 31 * (hasValue ? 1231 : 1237) + ((null == value) ? 0 : value.hashCode());

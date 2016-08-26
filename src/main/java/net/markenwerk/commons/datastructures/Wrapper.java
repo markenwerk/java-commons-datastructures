@@ -68,7 +68,7 @@ public final class Wrapper<Payload> {
 			return false;
 		}
 		Wrapper<?> other = (Wrapper<?>) object;
-		if (value == null && other.value != null || !value.equals(other.value)) {
+		if (null == value ? null != other.value : !value.equals(other.value)) {
 			return false;
 		}
 		return true;

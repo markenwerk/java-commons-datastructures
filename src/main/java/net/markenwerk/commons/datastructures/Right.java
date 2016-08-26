@@ -84,7 +84,7 @@ public final class Right<Left, Payload> extends Either<Left, Payload> {
 			return false;
 		}
 		Right<?, ?> other = (Right<?, ?>) object;
-		if (value == null && other.value != null || !value.equals(other.value)) {
+		if (null == value ? null != other.value : !value.equals(other.value)) {
 			return false;
 		}
 		return true;

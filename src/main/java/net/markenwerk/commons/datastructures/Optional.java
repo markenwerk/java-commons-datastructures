@@ -109,7 +109,7 @@ public final class Optional<Payload> {
 		Optional<?> other = (Optional<?>) object;
 		if (hasValue != other.hasValue) {
 			return false;
-		} else if (value == null && other.value != null || !value.equals(other.value)) {
+		} else if (null == value ? null != other.value : !value.equals(other.value)) {
 			return false;
 		}
 		return true;

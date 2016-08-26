@@ -112,9 +112,9 @@ public final class Entry<Key, Value> {
 			return false;
 		}
 		Entry<?, ?> other = (Entry<?, ?>) object;
-		if (key == null && other.key != null || !key.equals(other.key)) {
+		if (null == key ? null != other.key : !key.equals(other.key)) {
 			return false;
-		} else if (value == null && other.value != null || !value.equals(other.value)) {
+		} else if (null == value ? null != other.value : !value.equals(other.value)) {
 			return false;
 		}
 		return true;

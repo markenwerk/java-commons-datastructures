@@ -111,9 +111,9 @@ public final class Tuple<First, Second> {
 			return false;
 		}
 		Tuple<?, ?> other = (Tuple<?, ?>) object;
-		if (first == null && other.first != null || !first.equals(other.first)) {
+		if (null == first ? null != other.first : !first.equals(other.first)) {
 			return false;
-		} else if (second == null && other.second != null || !second.equals(other.second)) {
+		} else if (null == second ? null != other.second : !second.equals(other.second)) {
 			return false;
 		}
 		return true;

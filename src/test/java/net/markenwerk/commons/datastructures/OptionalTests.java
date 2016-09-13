@@ -26,6 +26,9 @@ import java.util.NoSuchElementException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import net.markenwerk.commons.exceptions.ProvisioningException;
+import net.markenwerk.commons.interfaces.Provider;
+
 @SuppressWarnings("javadoc")
 public class OptionalTests {
 
@@ -56,24 +59,117 @@ public class OptionalTests {
 		optional.getValue();
 
 	}
-	
+
 	@Test
 	public void getValue_fallback() {
 
 		Object value = new Object();
-		Optional<Object> optional = new Optional<Object>();
+		Optional<Object> optional = new Optional<Object>(value);
 
-		Assert.assertSame(value, optional.getValue(value));
+		Assert.assertSame(value, optional.getValue(new Object()));
 
 	}
 
 	@Test
-	public void getValue_noFallback() {
+	public void getValue_fallback_noValue() {
+
+		Object fallback = new Object();
+		Optional<Object> optional = new Optional<Object>();
+
+		Assert.assertSame(fallback, optional.getValue(fallback));
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void getValue_nullProvider() {
+
+		new Optional<Object>().getValue((Provider<Object>) null);
+
+	}
+
+	@Test
+	public void getValue_provider() {
 
 		Object value = new Object();
 		Optional<Object> optional = new Optional<Object>(value);
 
-		Assert.assertSame(value, optional.getValue(value));
+		Assert.assertSame(value, optional.getValue(new Provider<Object>() {
+
+			@Override
+			public Object provide() throws ProvisioningException {
+				return new Object();
+			}
+
+		}));
+
+	}
+
+	@Test
+	public void getValue_provider_noValue() {
+
+		final Object fallback = new Object();
+		Optional<Object> optional = new Optional<Object>();
+
+		Assert.assertSame(fallback, optional.getValue(new Provider<Object>() {
+
+			@Override
+			public Object provide() throws ProvisioningException {
+				return fallback;
+			}
+
+		}));
+
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void handle_nullProvider() {
+
+		new Optional<Object>().getValue(null);
+
+	}
+
+	@Test
+	public void handle_value() {
+
+		final Object result = new Object();
+		Optional<Object> optional = new Optional<Object>(new Object());
+
+		Assert.assertSame(result, optional.handle(new OptionalHandler<Object, Object>() {
+
+			@Override
+			public Object onNoValue() {
+				return null;
+			}
+
+			@Override
+			public Object onValue(Object payload) {
+				return result;
+			}
+
+		}));
+
+	}
+
+	@Test
+	public void handle_noValue() {
+
+		final Object result = new Object();
+		Optional<Object> optional = new Optional<Object>();
+
+		Assert.assertSame(result, optional.handle(new OptionalHandler<Object, Object>() {
+
+			@Override
+			public Object onNoValue() {
+				return result;
+			}
+
+			@Override
+			public Object onValue(Object payload) {
+				return null;
+			}
+
+		}));
+
 
 	}
 

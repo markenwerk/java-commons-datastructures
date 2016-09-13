@@ -23,8 +23,11 @@ package net.markenwerk.commons.datastructures;
 
 import java.util.NoSuchElementException;
 
+import net.markenwerk.commons.exceptions.ProvisioningException;
+import net.markenwerk.commons.interfaces.Provider;
+
 /**
- * A {@link Optional} is a simple immutable container class that may holds a
+ * An {@link Optional} is a simple immutable container class that may holds a
  * single value.
  * 
  * @param <Payload>
@@ -85,11 +88,49 @@ public final class Optional<Payload> {
 	 * the given fallback payload value.
 	 * 
 	 * @param fallback
-	 *            The fallback to be used.
+	 *            The fallback payload value to be used.
 	 * @return The value.
 	 */
 	public Payload getValue(Payload fallback) {
 		return hasValue ? value : fallback;
+	}
+
+	/**
+	 * Returns the value this {@link Optional} has been created with, if any, or
+	 * a payload value provided by the given {@link Provider}.
+	 * 
+	 * @param provider
+	 *            The {@link Provider} to be used.
+	 * @return The value.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             If the given {@link Provider} is {@literal null}.
+	 * @throws ProvisioningException
+	 *             If the given {@link Provider} failed to provide a fallback
+	 *             payload value.
+	 */
+	public Payload getValue(Provider<Payload> provider) throws IllegalArgumentException, ProvisioningException {
+		if (null == provider) {
+			throw new IllegalArgumentException("The given provider is null");
+		}
+		return hasValue ? value : provider.provide();
+	}
+
+	/**
+	 * Calls the appropriate method on the given {@link OptionalHandler}.
+	 * 
+	 * @param handler
+	 *            The {@link OptionalHandler} to be used.
+	 * @return The result value returned by the given {@link OptionalHandler}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             If the given {@link OptionalHandler} is {@literal null}.
+	 */
+	public <Result> Result handle(OptionalHandler<Payload, Result> handler) throws IllegalArgumentException {
+		if (null == handler) {
+			throw new IllegalArgumentException("The given handler is null");
+		}
+		return hasValue ? handler.onValue(value) : handler.onNoValue();
 	}
 
 	@Override

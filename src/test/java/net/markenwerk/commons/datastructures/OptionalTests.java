@@ -26,7 +26,9 @@ import java.util.NoSuchElementException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import net.markenwerk.commons.exceptions.ConversionException;
 import net.markenwerk.commons.exceptions.ProvisioningException;
+import net.markenwerk.commons.interfaces.Converter;
 import net.markenwerk.commons.interfaces.Provider;
 
 @SuppressWarnings("javadoc")
@@ -124,7 +126,7 @@ public class OptionalTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void handle_nullProvider() {
 
-		new Optional<Object>().getValue(null);
+		new Optional<Object>().handle(null);
 
 	}
 
@@ -170,6 +172,45 @@ public class OptionalTests {
 
 		}));
 
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void convert_nullConverter() {
+
+		new Optional<Object>().convert(null);
+
+	}
+
+	@Test
+	public void convert_value() {
+
+		final Object result = new Object();
+		Optional<Object> optional = new Optional<Object>(new Object());
+
+		Assert.assertSame(result, optional.convert(new Converter<Object, Object>() {
+
+			@Override
+			public Object convert(Object from) throws ConversionException {
+				return result;
+			}
+
+		}).getValue());
+
+	}
+
+	@Test
+	public void convert_noValue() {
+
+		Optional<Object> optional = new Optional<Object>();
+
+		Assert.assertFalse(optional.convert(new Converter<Object, Object>() {
+
+			@Override
+			public Object convert(Object from) throws ConversionException {
+				return null;
+			}
+			
+		}).hasValue());
 
 	}
 

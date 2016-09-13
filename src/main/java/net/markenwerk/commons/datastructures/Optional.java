@@ -24,6 +24,7 @@ package net.markenwerk.commons.datastructures;
 import java.util.NoSuchElementException;
 
 import net.markenwerk.commons.exceptions.ProvisioningException;
+import net.markenwerk.commons.interfaces.Converter;
 import net.markenwerk.commons.interfaces.Provider;
 
 /**
@@ -109,11 +110,28 @@ public final class Optional<Payload> {
 	 *             If the given {@link Provider} failed to provide a fallback
 	 *             payload value.
 	 */
-	public Payload getValue(Provider<Payload> provider) throws IllegalArgumentException, ProvisioningException {
+	public Payload getValue(Provider<? extends Payload> provider) throws IllegalArgumentException,
+			ProvisioningException {
 		if (null == provider) {
 			throw new IllegalArgumentException("The given provider is null");
 		}
 		return hasValue ? value : provider.provide();
+	}
+
+	/**
+	 * Converts the payload value of this {@link Optional}, if present, and
+	 * returns another {@link Optional}.
+	 * 
+	 * @param converter
+	 *            The {@link Converter} to be used.
+	 * @return The result value returned by the given {@link OptionalHandler}.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             If the given {@link Converter} is {@literal null}.
+	 */
+	public <Result> Optional<Result> convert(Converter<? super Payload, ? extends Result> converter)
+			throws IllegalArgumentException {
+		return handle(new ConvertingOptionalHandler<Payload, Result>(converter));
 	}
 
 	/**
@@ -126,7 +144,8 @@ public final class Optional<Payload> {
 	 * @throws IllegalArgumentException
 	 *             If the given {@link OptionalHandler} is {@literal null}.
 	 */
-	public <Result> Result handle(OptionalHandler<Payload, Result> handler) throws IllegalArgumentException {
+	public <Result> Result handle(OptionalHandler<? super Payload, ? extends Result> handler)
+			throws IllegalArgumentException {
 		if (null == handler) {
 			throw new IllegalArgumentException("The given handler is null");
 		}

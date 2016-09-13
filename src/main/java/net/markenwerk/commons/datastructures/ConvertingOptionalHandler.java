@@ -21,9 +21,12 @@
  */
 package net.markenwerk.commons.datastructures;
 
+import net.markenwerk.commons.interfaces.Converter;
+
 /**
- * An {@link NullOptionalHandler} is an {@link AbstractOptionalHandler} that does
- * nothing and always returns {@literal null}.
+ * An {@link ConvertingOptionalHandler} is an
+ * {@link AbstractConvertingOptionalHandler} that uses a {@link Converter} to
+ * convert payload values.
  * 
  * @param <Payload>
  *            The payload type.
@@ -32,6 +35,30 @@ package net.markenwerk.commons.datastructures;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public final class NullOptionalHandler<Payload, Result> extends AbstractOptionalHandler<Payload, Result> {
+public final class ConvertingOptionalHandler<Payload, Result> extends
+		AbstractConvertingOptionalHandler<Payload, Result> {
+
+	private final Converter<? super Payload, ? extends Result> converter;
+
+	/**
+	 * Creates a new {@link ConvertingOptionalHandler}.
+	 * 
+	 * @param converter
+	 *            The converter to be used.
+	 * @throws IllegalArgumentException
+	 *             If the given {@link Converter} is {@literal null}.
+	 */
+	public ConvertingOptionalHandler(Converter<? super Payload, ? extends Result> converter)
+			throws IllegalArgumentException {
+		if (null == converter) {
+			throw new IllegalArgumentException("The given converter is null");
+		}
+		this.converter = converter;
+	}
+
+	@Override
+	protected Result doConvert(Payload payload) {
+		return converter.convert(payload);
+	}
 
 }

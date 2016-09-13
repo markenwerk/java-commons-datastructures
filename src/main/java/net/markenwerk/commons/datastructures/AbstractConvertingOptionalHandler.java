@@ -22,10 +22,10 @@
 package net.markenwerk.commons.datastructures;
 
 /**
- * An {@link IdleOptionalHandler} is a {@link OptionalHandler} with empty
- * methods. It is intended a base implementation for custom
- * {@link OptionalHandler} implementations, that don't need to implement all
- * methods.
+ * An {@link AbstractConvertingOptionalHandler} is a {@link OptionalHandler}
+ * that converts the payload value of the
+ * {@link Optional#handle(OptionalHandler) handled} {@link Optional}, if
+ * present, and returns another {@link Optional}.
  * 
  * @param <Payload>
  *            The payload type.
@@ -34,16 +34,27 @@ package net.markenwerk.commons.datastructures;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public abstract class IdleOptionalHandler<Payload, Result> implements OptionalHandler<Payload, Result> {
+public abstract class AbstractConvertingOptionalHandler<Payload, Result> implements
+		OptionalHandler<Payload, Optional<Result>> {
 
 	@Override
-	public Result onNoValue() {
-		return null;
+	public Optional<Result> onNoValue() {
+		return new Optional<Result>();
 	}
 
 	@Override
-	public Result onValue(Payload payload) {
-		return null;
+	public Optional<Result> onValue(Payload payload) {
+		return new Optional<Result>(doConvert(payload));
 	}
+
+	/**
+	 * Converts the payload value of the
+	 * {@link Optional#handle(OptionalHandler) handled} {@link Optional}.
+	 * 
+	 * @param payload
+	 *            The payload value of the handled {@link Optional}.
+	 * @return A result value.
+	 */
+	protected abstract Result doConvert(Payload payload);
 
 }

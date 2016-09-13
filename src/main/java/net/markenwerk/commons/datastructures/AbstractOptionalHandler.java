@@ -22,8 +22,10 @@
 package net.markenwerk.commons.datastructures;
 
 /**
- * An {@link NullOptionalHandler} is an {@link AbstractOptionalHandler} that does
- * nothing and always returns {@literal null}.
+ * An {@link AbstractOptionalHandler} is a {@link OptionalHandler} with empty
+ * methods. It is intended a base implementation for custom
+ * {@link OptionalHandler} implementations, that don't need to implement all
+ * methods.
  * 
  * @param <Payload>
  *            The payload type.
@@ -32,6 +34,16 @@ package net.markenwerk.commons.datastructures;
  * @author Torsten Krause (tk at markenwerk dot net)
  * @since 1.0.0
  */
-public final class NullOptionalHandler<Payload, Result> extends AbstractOptionalHandler<Payload, Result> {
+public abstract class AbstractOptionalHandler<Payload, Result> implements OptionalHandler<Payload, Result> {
+
+	@Override
+	public Result onNoValue() {
+		return null;
+	}
+
+	@Override
+	public Result onValue(Payload payload) {
+		return null;
+	}
 
 }

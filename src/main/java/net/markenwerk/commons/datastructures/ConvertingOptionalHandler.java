@@ -33,7 +33,7 @@ import net.markenwerk.commons.interfaces.Converter;
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 1.2.1
  */
 public final class ConvertingOptionalHandler<Payload, Result> extends
 		AbstractConvertingOptionalHandler<Payload, Result> {

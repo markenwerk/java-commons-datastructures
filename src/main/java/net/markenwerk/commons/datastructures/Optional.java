@@ -122,6 +122,8 @@ public final class Optional<Payload> {
 	 * Converts the payload value of this {@link Optional}, if present, and
 	 * returns another {@link Optional}.
 	 * 
+	 * @param <Result>
+	 *            The result type.
 	 * @param converter
 	 *            The {@link Converter} to be used.
 	 * @return The result value returned by the given {@link OptionalHandler}.
@@ -137,6 +139,8 @@ public final class Optional<Payload> {
 	/**
 	 * Calls the appropriate method on the given {@link OptionalHandler}.
 	 * 
+	 * @param <Result>
+	 *            The result type.
 	 * @param handler
 	 *            The {@link OptionalHandler} to be used.
 	 * @return The result value returned by the given {@link OptionalHandler}.

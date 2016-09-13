@@ -32,7 +32,7 @@ package net.markenwerk.commons.datastructures;
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.0.0
+ * @since 1.2.0
  */
 public interface OptionalHandler<Payload, Result> {
 

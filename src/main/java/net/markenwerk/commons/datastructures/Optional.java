@@ -46,8 +46,7 @@ public final class Optional<Payload> {
 	 * Creates a new {@link Optional} without a value.
 	 */
 	public Optional() {
-		this.value = null;
-		hasValue = false;
+		this(null, true);
 	}
 
 	/**
@@ -57,8 +56,25 @@ public final class Optional<Payload> {
 	 *            The value to be used.
 	 */
 	public Optional(Payload value) {
-		this.value = value;
-		hasValue = true;
+		this(value, false);
+	}
+
+	/**
+	 * Creates a new {@link Optional}.
+	 * 
+	 * @param value
+	 *            The value to be used.
+	 * @param ignoreNull
+	 *            Whether to ignore {@literal null}-values.
+	 */
+	public Optional(Payload value, boolean ignoreNull) {
+		if (null == value && ignoreNull) {
+			hasValue = false;
+			this.value = null;
+		} else {
+			hasValue = true;
+			this.value = value;
+		}
 	}
 
 	/**

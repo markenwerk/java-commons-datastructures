@@ -22,28 +22,36 @@
 package net.markenwerk.commons.datastructures;
 
 /**
- * An {@link AbstractOptionalHandler} is a {@link OptionalHandler} with empty
- * methods. It is intended a base implementation for custom
- * {@link OptionalHandler} implementations, that don't need to implement all
- * methods.
+ * An {@link OptionalSelection} can be used to
+ * {@link Optional#select(OptionalSelection) handle} an {@link Optional} and
+ * obtain a result value, whether the {@link Optional}
+ * {@link Optional#hasValue() has} a value or not.
  * 
  * @param <Payload>
  *            The payload type.
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.2.1
+ * @since 1.3.0
  */
-public abstract class AbstractOptionalHandler<Payload, Result> implements OptionalHandler<Payload, Result> {
+public interface OptionalSelection<Payload, Result> {
 
-	@Override
-	public Result onNoValue() {
-		return null;
-	}
+	/**
+	 * Called by the {@link Optional#select(OptionalSelection) handled}
+	 * {@link Optional} if it {@link Optional#hasValue() has} no payload value.
+	 * 
+	 * @return A result value.
+	 */
+	public Result onNoValue();
 
-	@Override
-	public Result onValue(Payload payload) {
-		return null;
-	}
+	/**
+	 * Called by the {@link Optional#select(OptionalSelection) handled}
+	 * {@link Optional} if it has {@link Optional#hasValue() has} a value.
+	 * 
+	 * @param payload
+	 *            The payload value of the handled {@link Optional}.
+	 * @return A result value.
+	 */
+	public Result onValue(Payload payload);
 
 }

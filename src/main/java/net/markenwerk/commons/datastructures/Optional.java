@@ -142,34 +142,34 @@ public final class Optional<Payload> {
 	 *            The result type.
 	 * @param converter
 	 *            The {@link Converter} to be used.
-	 * @return The result value returned by the given {@link OptionalHandler}.
+	 * @return The result value returned by the given {@link OptionalSelection}.
 	 * 
 	 * @throws IllegalArgumentException
 	 *             If the given {@link Converter} is {@literal null}.
 	 */
 	public <Result> Optional<Result> convert(Converter<? super Payload, ? extends Result> converter)
 			throws IllegalArgumentException {
-		return handle(new ConvertingOptionalHandler<Payload, Result>(converter));
+		return select(new ConvertingOptionalSelection<Payload, Result>(converter));
 	}
 
 	/**
-	 * Calls the appropriate method on the given {@link OptionalHandler}.
+	 * Calls the appropriate method on the given {@link OptionalSelection}.
 	 * 
 	 * @param <Result>
 	 *            The result type.
-	 * @param handler
-	 *            The {@link OptionalHandler} to be used.
-	 * @return The result value returned by the given {@link OptionalHandler}.
+	 * @param selection
+	 *            The {@link OptionalSelection} to be used.
+	 * @return The result value returned by the given {@link OptionalSelection}.
 	 * 
 	 * @throws IllegalArgumentException
-	 *             If the given {@link OptionalHandler} is {@literal null}.
+	 *             If the given {@link OptionalSelection} is {@literal null}.
 	 */
-	public <Result> Result handle(OptionalHandler<? super Payload, ? extends Result> handler)
+	public <Result> Result select(OptionalSelection<? super Payload, ? extends Result> selection)
 			throws IllegalArgumentException {
-		if (null == handler) {
-			throw new IllegalArgumentException("The given handler is null");
+		if (null == selection) {
+			throw new IllegalArgumentException("The given selection is null");
 		}
-		return hasValue ? handler.onValue(value) : handler.onNoValue();
+		return hasValue ? selection.onValue(value) : selection.onNoValue();
 	}
 
 	@Override

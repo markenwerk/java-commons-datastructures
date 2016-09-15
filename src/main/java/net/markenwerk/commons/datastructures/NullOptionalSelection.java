@@ -22,7 +22,7 @@
 package net.markenwerk.commons.datastructures;
 
 /**
- * An {@link NullOptionalHandler} is an {@link AbstractOptionalHandler} that does
+ * An {@link NullOptionalSelection} is an {@link AbstractOptionalSelection} that does
  * nothing and always returns {@literal null}.
  * 
  * @param <Payload>
@@ -30,8 +30,8 @@ package net.markenwerk.commons.datastructures;
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.2.0
+ * @since 1.3.0
  */
-public final class NullOptionalHandler<Payload, Result> extends AbstractOptionalHandler<Payload, Result> {
+public final class NullOptionalSelection<Payload, Result> extends AbstractOptionalSelection<Payload, Result> {
 
 }

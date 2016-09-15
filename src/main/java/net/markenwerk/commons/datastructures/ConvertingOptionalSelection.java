@@ -21,37 +21,44 @@
  */
 package net.markenwerk.commons.datastructures;
 
+import net.markenwerk.commons.interfaces.Converter;
+
 /**
- * An {@link OptionalHandler} can be used to
- * {@link Optional#handle(OptionalHandler) handle} an {@link Optional} and
- * obtain a result value, whether the {@link Optional}
- * {@link Optional#hasValue() has} a value or not.
+ * An {@link ConvertingOptionalSelection} is an
+ * {@link AbstractConvertingOptionalSelection} that uses a {@link Converter} to
+ * convert payload values.
  * 
  * @param <Payload>
  *            The payload type.
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.2.0
+ * @since 1.3.0
  */
-public interface OptionalHandler<Payload, Result> {
+public final class ConvertingOptionalSelection<Payload, Result> extends
+		AbstractConvertingOptionalSelection<Payload, Result> {
+
+	private final Converter<? super Payload, ? extends Result> converter;
 
 	/**
-	 * Called by the {@link Optional#handle(OptionalHandler) handled}
-	 * {@link Optional} if it {@link Optional#hasValue() has} no payload value.
+	 * Creates a new {@link ConvertingOptionalSelection}.
 	 * 
-	 * @return A result value.
+	 * @param converter
+	 *            The converter to be used.
+	 * @throws IllegalArgumentException
+	 *             If the given {@link Converter} is {@literal null}.
 	 */
-	public Result onNoValue();
+	public ConvertingOptionalSelection(Converter<? super Payload, ? extends Result> converter)
+			throws IllegalArgumentException {
+		if (null == converter) {
+			throw new IllegalArgumentException("The given converter is null");
+		}
+		this.converter = converter;
+	}
 
-	/**
-	 * Called by the {@link Optional#handle(OptionalHandler) handled}
-	 * {@link Optional} if it has {@link Optional#hasValue() has} a value.
-	 * 
-	 * @param payload
-	 *            The payload value of the handled {@link Optional}.
-	 * @return A result value.
-	 */
-	public Result onValue(Payload payload);
+	@Override
+	protected Result doConvert(Payload payload) {
+		return converter.convert(payload);
+	}
 
 }

@@ -126,7 +126,7 @@ public class OptionalTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void handle_nullProvider() {
 
-		new Optional<Object>().handle(null);
+		new Optional<Object>().select(null);
 
 	}
 
@@ -136,7 +136,7 @@ public class OptionalTests {
 		final Object result = new Object();
 		Optional<Object> optional = new Optional<Object>(new Object());
 
-		Assert.assertSame(result, optional.handle(new OptionalHandler<Object, Object>() {
+		Assert.assertSame(result, optional.select(new OptionalSelection<Object, Object>() {
 
 			@Override
 			public Object onNoValue() {
@@ -158,7 +158,7 @@ public class OptionalTests {
 		final Object result = new Object();
 		Optional<Object> optional = new Optional<Object>();
 
-		Assert.assertSame(result, optional.handle(new OptionalHandler<Object, Object>() {
+		Assert.assertSame(result, optional.select(new OptionalSelection<Object, Object>() {
 
 			@Override
 			public Object onNoValue() {

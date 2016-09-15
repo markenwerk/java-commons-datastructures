@@ -21,44 +21,40 @@
  */
 package net.markenwerk.commons.datastructures;
 
-import net.markenwerk.commons.interfaces.Converter;
-
 /**
- * An {@link ConvertingOptionalHandler} is an
- * {@link AbstractConvertingOptionalHandler} that uses a {@link Converter} to
- * convert payload values.
+ * An {@link AbstractConvertingOptionalSelection} is a {@link OptionalSelection}
+ * that converts the payload value of the
+ * {@link Optional#select(OptionalSelection) handled} {@link Optional}, if
+ * present, and returns another {@link Optional}.
  * 
  * @param <Payload>
  *            The payload type.
  * @param <Result>
  *            The result type.
  * @author Torsten Krause (tk at markenwerk dot net)
- * @since 1.2.1
+ * @since 1.3.0
  */
-public final class ConvertingOptionalHandler<Payload, Result> extends
-		AbstractConvertingOptionalHandler<Payload, Result> {
+public abstract class AbstractConvertingOptionalSelection<Payload, Result> implements
+		OptionalSelection<Payload, Optional<Result>> {
 
-	private final Converter<? super Payload, ? extends Result> converter;
-
-	/**
-	 * Creates a new {@link ConvertingOptionalHandler}.
-	 * 
-	 * @param converter
-	 *            The converter to be used.
-	 * @throws IllegalArgumentException
-	 *             If the given {@link Converter} is {@literal null}.
-	 */
-	public ConvertingOptionalHandler(Converter<? super Payload, ? extends Result> converter)
-			throws IllegalArgumentException {
-		if (null == converter) {
-			throw new IllegalArgumentException("The given converter is null");
-		}
-		this.converter = converter;
+	@Override
+	public Optional<Result> onNoValue() {
+		return new Optional<Result>();
 	}
 
 	@Override
-	protected Result doConvert(Payload payload) {
-		return converter.convert(payload);
+	public Optional<Result> onValue(Payload payload) {
+		return new Optional<Result>(doConvert(payload));
 	}
+
+	/**
+	 * Converts the payload value of the
+	 * {@link Optional#select(OptionalSelection) handled} {@link Optional}.
+	 * 
+	 * @param payload
+	 *            The payload value of the handled {@link Optional}.
+	 * @return A result value.
+	 */
+	protected abstract Result doConvert(Payload payload);
 
 }

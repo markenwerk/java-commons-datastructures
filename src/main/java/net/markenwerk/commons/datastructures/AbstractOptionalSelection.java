@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2015, 2016 Torsten Krause, Markenwerk GmbH
- * 
+ * Copyright (c) 2016 Torsten Krause, Markenwerk GmbH
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,24 +21,29 @@
  */
 package net.markenwerk.commons.datastructures;
 
-import org.junit.Assert;
-import org.junit.Test;
+/**
+ * An {@link AbstractOptionalSelection} is a {@link OptionalSelection} with empty
+ * methods. It is intended a base implementation for custom
+ * {@link OptionalSelection} implementations, that don't need to implement all
+ * methods.
+ * 
+ * @param <Payload>
+ *            The payload type.
+ * @param <Result>
+ *            The result type.
+ * @author Torsten Krause (tk at markenwerk dot net)
+ * @since 1.2.1
+ */
+public abstract class AbstractOptionalSelection<Payload, Result> implements OptionalSelection<Payload, Result> {
 
-@SuppressWarnings("javadoc")
-public class NullOptionalHandlerTests {
-
-	@Test
-	public void handle_value() {
-
-		Assert.assertNull(new Optional<Object>(new Object()).handle(new NullOptionalHandler<Object, Void>()));
-
+	@Override
+	public Result onNoValue() {
+		return null;
 	}
 
-	@Test
-	public void handle_noValue() {
-
-		Assert.assertNull(new Optional<Object>().handle(new NullOptionalHandler<Object, Void>()));
-
+	@Override
+	public Result onValue(Payload payload) {
+		return null;
 	}
 
 }
